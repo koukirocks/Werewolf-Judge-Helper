@@ -1,0 +1,212 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnoquofvyur08"]
+
+[ext_resource type="Script" path="res://code/Menu.gd" id="1_olt0t"]
+[ext_resource type="LabelSettings" uid="uid://cpdydlrjq4lja" path="res://Black_label.tres" id="1_x4d8q"]
+[ext_resource type="Script" path="res://code/PlayerCountSlider.gd" id="2_plm83"]
+[ext_resource type="PackedScene" uid="uid://ckyx4c0lfc0fm" path="res://Scene/character.tscn" id="3_80dwd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7j2o"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdexo"]
+bg_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dwdm"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x43i4"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_olt0t")
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBox1" type="VBoxContainer" parent="Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Player" type="PanelContainer" parent="Scroll/VBox1"]
+custom_minimum_size = Vector2(720, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7j2o")
+
+[node name="Vbox2" type="VBoxContainer" parent="Scroll/VBox1/Player"]
+layout_mode = 2
+
+[node name="PlayerCount" type="Label" parent="Scroll/VBox1/Player/Vbox2"]
+layout_mode = 2
+text = "5"
+label_settings = ExtResource("1_x4d8q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerCountSlider" type="HSlider" parent="Scroll/VBox1/Player/Vbox2"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+min_value = 5.0
+max_value = 20.0
+value = 5.0
+tick_count = 16
+ticks_on_borders = true
+script = ExtResource("2_plm83")
+
+[node name="Survivor" type="PanelContainer" parent="Scroll/VBox1"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jdexo")
+
+[node name="Margin1" type="MarginContainer" parent="Scroll/VBox1/Survivor"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox3" type="VBoxContainer" parent="Scroll/VBox1/Survivor/Margin1"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Scroll/VBox1/Survivor/Margin1/VBox3"]
+layout_mode = 2
+text = "好人陣營"
+label_settings = ExtResource("1_x4d8q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="GridContainer" parent="Scroll/VBox1/Survivor/Margin1/VBox3"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 4
+
+[node name="Prophet" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 33
+text = "預言家"
+
+[node name="Witch" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "女巫"
+
+[node name="Hunter" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "獵人"
+
+[node name="Knight" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+text = "騎士"
+
+[node name="Idiot" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+text = "白癡"
+
+[node name="Guard" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+text = "守衛"
+
+[node name="Werewolf" type="PanelContainer" parent="Scroll/VBox1"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3dwdm")
+
+[node name="Margin2" type="MarginContainer" parent="Scroll/VBox1/Werewolf"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox3" type="VBoxContainer" parent="Scroll/VBox1/Werewolf/Margin2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Scroll/VBox1/Werewolf/Margin2/VBox3"]
+layout_mode = 2
+text = "狼人陣營"
+label_settings = ExtResource("1_x4d8q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="GridContainer" parent="Scroll/VBox1/Werewolf/Margin2/VBox3"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 4
+
+[node name="Wolf" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "小狼"
+
+[node name="King" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "狼王"
+
+[node name="White" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 33
+text = "白狼王"
+
+[node name="Black" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "黑狼王"
+
+[node name="Snow" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+text = "雪狼"
+
+[node name="Robot" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "機械狼"
+
+[node name="Night Order" type="PanelContainer" parent="Scroll/VBox1"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x43i4")
+
+[node name="Margin2" type="MarginContainer" parent="Scroll/VBox1/Night Order"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox3" type="VBoxContainer" parent="Scroll/VBox1/Night Order/Margin2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Scroll/VBox1/Night Order/Margin2/VBox3"]
+layout_mode = 2
+text = "夜晚睜眼順序"
+label_settings = ExtResource("1_x4d8q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="Scroll/VBox1/Night Order/Margin2/VBox3"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[connection signal="drag_ended" from="Scroll/VBox1/Player/Vbox2/PlayerCountSlider" to="." method="_on_player_count_slider_drag_ended"]
+[connection signal="value_changed" from="Scroll/VBox1/Player/Vbox2/PlayerCountSlider" to="Scroll/VBox1/Player/Vbox2/PlayerCountSlider" method="_on_value_changed"]
