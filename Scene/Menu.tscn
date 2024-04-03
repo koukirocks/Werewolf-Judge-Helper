@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnoquofvyur08"]
+[gd_scene load_steps=17 format=3 uid="uid://cnoquofvyur08"]
 
 [ext_resource type="Script" path="res://code/Menu.gd" id="1_olt0t"]
 [ext_resource type="LabelSettings" uid="uid://cpdydlrjq4lja" path="res://Black_label.tres" id="1_x4d8q"]
 [ext_resource type="Script" path="res://code/PlayerCountSlider.gd" id="2_plm83"]
 [ext_resource type="PackedScene" uid="uid://ckyx4c0lfc0fm" path="res://Scene/character.tscn" id="3_80dwd"]
+[ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="5_ryjlr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7j2o"]
 bg_color = Color(1, 1, 1, 1)
@@ -15,6 +16,36 @@ bg_color = Color(0, 1, 1, 1)
 bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x43i4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itdwo"]
+bg_color = Color(0, 0, 0.537255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqpeq"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuf6c"]
+bg_color = Color(0.764706, 0.764706, 0.764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xo8yh"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biaf3"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_x8yji"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("5_ryjlr")
+Button/styles/focus = SubResource("StyleBoxFlat_oqpeq")
+Button/styles/hover = SubResource("StyleBoxFlat_uuf6c")
+Button/styles/normal = SubResource("StyleBoxFlat_xo8yh")
+Button/styles/pressed = SubResource("StyleBoxFlat_biaf3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vm4ue"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -43,6 +74,7 @@ size_flags_vertical = 3
 [node name="Player" type="PanelContainer" parent="Scroll/VBox1"]
 custom_minimum_size = Vector2(720, 100)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_p7j2o")
 
 [node name="Vbox2" type="VBoxContainer" parent="Scroll/VBox1/Player"]
@@ -70,6 +102,7 @@ script = ExtResource("2_plm83")
 [node name="Survivor" type="PanelContainer" parent="Scroll/VBox1"]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_jdexo")
 
 [node name="Margin1" type="MarginContainer" parent="Scroll/VBox1/Survivor"]
@@ -99,8 +132,9 @@ columns = 4
 [node name="Prophet" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 33
-text = "預言家"
+theme_override_font_sizes/font_size = 40
+text = "預言
+家"
 
 [node name="Witch" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
 layout_mode = 2
@@ -127,6 +161,7 @@ text = "守衛"
 [node name="Werewolf" type="PanelContainer" parent="Scroll/VBox1"]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_3dwdm")
 
 [node name="Margin2" type="MarginContainer" parent="Scroll/VBox1/Werewolf"]
@@ -166,47 +201,102 @@ text = "狼王"
 [node name="White" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_font_sizes/font_size = 33
-text = "白狼王"
+theme_override_font_sizes/font_size = 40
+text = "白
+狼王"
 
 [node name="Black" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "黑狼王"
+theme_override_font_sizes/font_size = 40
+text = "黑
+狼王"
 
 [node name="Snow" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
 layout_mode = 2
 text = "雪狼"
 
-[node name="Robot" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
+[node name="Third Party" type="PanelContainer" parent="Scroll/VBox1"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "機械狼"
-
-[node name="Night Order" type="PanelContainer" parent="Scroll/VBox1"]
-layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_x43i4")
 
-[node name="Margin2" type="MarginContainer" parent="Scroll/VBox1/Night Order"]
+[node name="Margin2" type="MarginContainer" parent="Scroll/VBox1/Third Party"]
 layout_mode = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBox3" type="VBoxContainer" parent="Scroll/VBox1/Night Order/Margin2"]
+[node name="VBox3" type="VBoxContainer" parent="Scroll/VBox1/Third Party/Margin2"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Title" type="Label" parent="Scroll/VBox1/Night Order/Margin2/VBox3"]
+[node name="Title" type="Label" parent="Scroll/VBox1/Third Party/Margin2/VBox3"]
 layout_mode = 2
-text = "夜晚睜眼順序"
+text = "第三陣營"
 label_settings = ExtResource("1_x4d8q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Scroll/VBox1/Night Order/Margin2/VBox3"]
-custom_minimum_size = Vector2(500, 50)
+[node name="Buttons" type="GridContainer" parent="Scroll/VBox1/Third Party/Margin2/VBox3"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 4
+
+[node name="Cupid" parent="Scroll/VBox1/Third Party/Margin2/VBox3/Buttons" groups=["Characters", "Third Party", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "邱比
+特"
+
+[node name="Thief" parent="Scroll/VBox1/Third Party/Margin2/VBox3/Buttons" groups=["Characters", "Third Party", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "盜賊"
+
+[node name="Bomber" parent="Scroll/VBox1/Third Party/Margin2/VBox3/Buttons" groups=["Characters", "Third Party", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 40
+text = "炸彈
+客"
+
+[node name="Third Party2" type="PanelContainer" parent="Scroll/VBox1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_itdwo")
+
+[node name="Margin2" type="MarginContainer" parent="Scroll/VBox1/Third Party2"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBox3" type="HBoxContainer" parent="Scroll/VBox1/Third Party2/Margin2"]
+layout_mode = 2
+theme = SubResource("Theme_x8yji")
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Start" type="Button" parent="Scroll/VBox1/Third Party2/Margin2/HBox3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("5_ryjlr")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_vm4ue")
+text = "開始遊戲"
+
+[node name="Police" type="Button" parent="Scroll/VBox1/Third Party2/Margin2/HBox3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "上警"
 
 [connection signal="drag_ended" from="Scroll/VBox1/Player/Vbox2/PlayerCountSlider" to="." method="_on_player_count_slider_drag_ended"]
 [connection signal="value_changed" from="Scroll/VBox1/Player/Vbox2/PlayerCountSlider" to="Scroll/VBox1/Player/Vbox2/PlayerCountSlider" method="_on_value_changed"]
