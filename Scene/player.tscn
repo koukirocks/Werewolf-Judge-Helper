@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://67kdga75t3f6"]
+
+[ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="1_h7p33"]
+[ext_resource type="Texture2D" uid="uid://dxntyboy08okh" path="res://Pictures/Badge.png" id="2_eoq3k"]
+[ext_resource type="Script" path="res://code/player.gd" id="2_h6ilg"]
+[ext_resource type="StyleBox" uid="uid://c1175ctofda8d" path="res://Style/RoundButton.tres" id="2_msahj"]
+[ext_resource type="StyleBox" uid="uid://4un1gb1lgsec" path="res://Style/IsPolice.tres" id="2_x3upy"]
+[ext_resource type="Texture2D" uid="uid://dyqljbiv83ikt" path="res://Pictures/heart.png" id="3_b2kke"]
+
+[sub_resource type="Theme" id="Theme_1bpni"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 80
+Label/fonts/font = ExtResource("1_h7p33")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl26o"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2brl0"]
+
+[sub_resource type="Theme" id="Theme_uqy4v"]
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_h7p33")
+Button/styles/disabled = SubResource("StyleBoxEmpty_2brl0")
+Button/styles/focus = ExtResource("2_msahj")
+Button/styles/hover = ExtResource("2_msahj")
+Button/styles/normal = ExtResource("2_msahj")
+Button/styles/pressed = ExtResource("2_msahj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wijdt"]
+texture = ExtResource("2_eoq3k")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vp77d"]
+texture = ExtResource("3_b2kke")
+
+[node name="Player" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 1
+theme = SubResource("Theme_1bpni")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cl26o")
+script = ExtResource("2_h6ilg")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBC" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+
+[node name="HBC" type="HBoxContainer" parent="MC/VBC"]
+layout_mode = 2
+theme = SubResource("Theme_uqy4v")
+theme_override_constants/separation = 20
+
+[node name="ID" type="Label" parent="MC/VBC/HBC"]
+layout_mode = 2
+text = "1."
+
+[node name="IsPolice" type="Button" parent="MC/VBC/HBC"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/normal = ExtResource("2_x3upy")
+theme_override_styles/hover = ExtResource("2_x3upy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wijdt")
+disabled = true
+toggle_mode = true
+button_pressed = true
+
+[node name="IsCouple" type="Button" parent="MC/VBC/HBC"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/normal = ExtResource("2_x3upy")
+theme_override_styles/hover = ExtResource("2_x3upy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vp77d")
+toggle_mode = true
+
+[node name="Character" type="Button" parent="MC/VBC/HBC"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.521569, 0, 0, 1)
+
+[node name="Die" type="Button" parent="MC/VBC/HBC"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.619608, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.619608, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.619608, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.619608, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.619608, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.619608, 0, 0, 1)
+text = "死亡"
+
+[connection signal="pressed" from="MC/VBC/HBC/Character" to="." method="_on_character_pressed"]
+[connection signal="pressed" from="MC/VBC/HBC/Die" to="." method="_on_die_pressed"]

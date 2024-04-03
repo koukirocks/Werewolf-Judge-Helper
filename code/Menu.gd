@@ -9,7 +9,6 @@ func _ready():
 func _process(_delta):
 	pass
 
-
 var PlayerCount=5
 func _on_player_count_slider_drag_ended(_value_changed):
 	PlayerCount=$Scroll/VBox1/Player/Vbox2/PlayerCountSlider.value
