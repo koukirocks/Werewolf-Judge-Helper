@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dji0odtmd2hni"]
+
+[ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="1_b251a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhkjm"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rm22x"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ldx4"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wi5tl"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6csb"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_b251a")
+Button/styles/disabled = SubResource("StyleBoxFlat_nhkjm")
+Button/styles/focus = SubResource("StyleBoxFlat_rm22x")
+Button/styles/hover = SubResource("StyleBoxFlat_3ldx4")
+Button/styles/normal = SubResource("StyleBoxFlat_wi5tl")
+Button/styles/pressed = SubResource("StyleBoxFlat_a6csb")

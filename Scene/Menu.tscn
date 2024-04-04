@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnoquofvyur08"]
+[gd_scene load_steps=18 format=3 uid="uid://cnoquofvyur08"]
 
 [ext_resource type="Script" path="res://code/Menu.gd" id="1_olt0t"]
 [ext_resource type="LabelSettings" uid="uid://cpdydlrjq4lja" path="res://Black_label.tres" id="1_x4d8q"]
@@ -47,6 +47,9 @@ Button/styles/pressed = SubResource("StyleBoxFlat_biaf3")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vm4ue"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uojhe"]
+bg_color = Color(0, 0.615686, 0, 1)
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -72,22 +75,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Player" type="PanelContainer" parent="Scroll/VBox1"]
-custom_minimum_size = Vector2(720, 100)
+custom_minimum_size = Vector2(720, 120)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_p7j2o")
 
-[node name="Vbox2" type="VBoxContainer" parent="Scroll/VBox1/Player"]
+[node name="MC" type="MarginContainer" parent="Scroll/VBox1/Player"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Vbox2" type="VBoxContainer" parent="Scroll/VBox1/Player/MC"]
 layout_mode = 2
 
-[node name="PlayerCount" type="Label" parent="Scroll/VBox1/Player/Vbox2"]
+[node name="PlayerCount" type="Label" parent="Scroll/VBox1/Player/MC/Vbox2"]
 layout_mode = 2
-text = "5"
+text = "玩家人數：5"
 label_settings = ExtResource("1_x4d8q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerCountSlider" type="HSlider" parent="Scroll/VBox1/Player/Vbox2"]
+[node name="PlayerCountSlider" type="HSlider" parent="Scroll/VBox1/Player/MC/Vbox2"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -295,8 +305,11 @@ text = "開始遊戲"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uojhe")
+toggle_mode = true
 text = "上警"
 
-[connection signal="drag_ended" from="Scroll/VBox1/Player/Vbox2/PlayerCountSlider" to="." method="_on_player_count_slider_drag_ended"]
-[connection signal="value_changed" from="Scroll/VBox1/Player/Vbox2/PlayerCountSlider" to="Scroll/VBox1/Player/Vbox2/PlayerCountSlider" method="_on_value_changed"]
+[connection signal="drag_ended" from="Scroll/VBox1/Player/MC/Vbox2/PlayerCountSlider" to="." method="_on_player_count_slider_drag_ended"]
+[connection signal="value_changed" from="Scroll/VBox1/Player/MC/Vbox2/PlayerCountSlider" to="Scroll/VBox1/Player/MC/Vbox2/PlayerCountSlider" method="_on_value_changed"]

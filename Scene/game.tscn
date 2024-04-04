@@ -1,4 +1,24 @@
-[gd_scene format=3 uid="uid://dg3xyf5u4p7u2"]
+[gd_scene load_steps=8 format=3 uid="uid://dg3xyf5u4p7u2"]
+
+[ext_resource type="PackedScene" uid="uid://67kdga75t3f6" path="res://Scene/player.tscn" id="1_njge4"]
+[ext_resource type="Theme" uid="uid://dji0odtmd2hni" path="res://Style/GeneralButton.tres" id="2_lg52s"]
+[ext_resource type="Texture2D" uid="uid://83beuerw5v8t" path="res://Pictures/Locked.jpg" id="3_j7bxh"]
+[ext_resource type="Texture2D" uid="uid://ogid10jglinq" path="res://Pictures/Unlocked.jpg" id="4_rqrvb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsxt1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ubd5"]
+texture = ExtResource("3_j7bxh")
+modulate_color = Color(0.6, 0.6, 0.6, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5kij"]
+texture = ExtResource("4_rqrvb")
+modulate_color = Color(0.6, 0.6, 0.6, 1)
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -8,10 +28,86 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Margin" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="SC" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Margin"]
+[node name="VBC" type="VBoxContainer" parent="SC"]
 layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Player" parent="SC/VBC" instance=ExtResource("1_njge4")]
+layout_mode = 2
+
+[node name="PC" type="PanelContainer" parent="SC/VBC"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_hsxt1")
+
+[node name="MarginContainer" type="MarginContainer" parent="SC/VBC/PC"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBC" type="HBoxContainer" parent="SC/VBC/PC/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_lg52s")
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Lock" type="Button" parent="SC/VBC/PC/MarginContainer/HBC"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+
+[node name="MC" type="MarginContainer" parent="SC/VBC/PC/MarginContainer/HBC/Lock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Icon" type="Panel" parent="SC/VBC/PC/MarginContainer/HBC/Lock/MC"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1ubd5")
+
+[node name="MC2" type="MarginContainer" parent="SC/VBC/PC/MarginContainer/HBC/Lock"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Icon" type="Panel" parent="SC/VBC/PC/MarginContainer/HBC/Lock/MC2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_v5kij")
+
+[node name="End" type="Button" parent="SC/VBC/PC/MarginContainer/HBC"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "結束遊戲"
+
+[node name="Routine" type="Button" parent="SC/VBC/PC/MarginContainer/HBC"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "夜晚流程"

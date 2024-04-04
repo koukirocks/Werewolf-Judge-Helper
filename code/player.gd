@@ -1,7 +1,7 @@
 extends PanelContainer
 
 var CanChange=true
-var Characters=["Villager","Witch","White","Cupid"]
+var Characters=["Villager","Witch","White","Cupid","Guard"]
 var CurrentCharacter=0
 var Translate={
 	"Villager":"村民",
@@ -65,3 +65,5 @@ func _on_character_pressed():
 		CurrentCharacter%=len(Characters)
 	$MC/VBC/HBC/Character.text=Translate[Characters[CurrentCharacter]]
 	$MC/VBC/HBC/Character.add_theme_color_override("font_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
+	$MC/VBC/HBC/Character.add_theme_color_override("font_pressed_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
+	$MC/VBC/HBC/Character.add_theme_color_override("font_hover_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
