@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://67kdga75t3f6"]
+[gd_scene load_steps=20 format=3 uid="uid://67kdga75t3f6"]
 
 [ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="1_h7p33"]
 [ext_resource type="Texture2D" uid="uid://dxntyboy08okh" path="res://Pictures/Badge.png" id="2_eoq3k"]
@@ -6,14 +6,11 @@
 [ext_resource type="StyleBox" uid="uid://c1175ctofda8d" path="res://Style/RoundButton.tres" id="2_msahj"]
 [ext_resource type="StyleBox" uid="uid://4un1gb1lgsec" path="res://Style/IsPolice.tres" id="2_x3upy"]
 [ext_resource type="Texture2D" uid="uid://dyqljbiv83ikt" path="res://Pictures/heart.png" id="3_b2kke"]
-[ext_resource type="Script" path="res://code/Record.gd" id="7_lm77l"]
-[ext_resource type="StyleBox" uid="uid://b8mwl1c5a28x4" path="res://Style/RedRecord.tres" id="7_mbumh"]
-[ext_resource type="StyleBox" uid="uid://cj2ofeq3dvpta" path="res://Style/GreenRecord.tres" id="9_huyu5"]
-[ext_resource type="StyleBox" uid="uid://bmyhvkgexcxt" path="res://Style/BlueRecord.tres" id="10_qx1s3"]
+[ext_resource type="Script" path="res://code/Inv.gd" id="7_t8nir"]
 
 [sub_resource type="Theme" id="Theme_1bpni"]
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 80
+Label/font_sizes/font_size = 60
 Label/fonts/font = ExtResource("1_h7p33")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl26o"]
@@ -117,6 +114,7 @@ theme_override_styles/normal = ExtResource("2_x3upy")
 theme_override_styles/hover = ExtResource("2_x3upy")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_wijdt")
 toggle_mode = true
+action_mode = 0
 
 [node name="IsCouple" type="Button" parent="MC/VBC/HBC"]
 custom_minimum_size = Vector2(100, 100)
@@ -127,13 +125,31 @@ theme_override_styles/normal = ExtResource("2_x3upy")
 theme_override_styles/hover = ExtResource("2_x3upy")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_vp77d")
 toggle_mode = true
+action_mode = 0
 
 [node name="Character" type="Button" parent="MC/VBC/HBC"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 mouse_filter = 1
+text = "村民"
+
+[node name="Witch Inv" type="VBoxContainer" parent="MC/VBC/HBC"]
+layout_mode = 2
+script = ExtResource("7_t8nir")
+
+[node name="Cure" type="Button" parent="MC/VBC/HBC/Witch Inv"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "解"
+
+[node name="Poison" type="Button" parent="MC/VBC/HBC/Witch Inv"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "毒"
 
 [node name="Die" type="Button" parent="MC/VBC/HBC"]
 custom_minimum_size = Vector2(100, 0)
@@ -157,49 +173,11 @@ theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 20
 columns = 5
 
-[node name="Kill" type="Button" parent="MC/VBC/GridContainer"]
+[node name="Add" type="Button" parent="MC/VBC/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme_override_styles/pressed = ExtResource("7_mbumh")
-toggle_mode = true
-text = "殺"
-script = ExtResource("7_lm77l")
-detect = ["MUST"]
-
-[node name="Cure" type="Button" parent="MC/VBC/GridContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme_override_styles/pressed = ExtResource("9_huyu5")
-toggle_mode = true
-text = "解"
-script = ExtResource("7_lm77l")
-detect = ["Witch"]
-
-[node name="Poison" type="Button" parent="MC/VBC/GridContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme_override_styles/pressed = ExtResource("7_mbumh")
-toggle_mode = true
-text = "毒"
-script = ExtResource("7_lm77l")
-detect = ["Witch"]
-
-[node name="Guard" type="Button" parent="MC/VBC/GridContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme_override_styles/pressed = ExtResource("10_qx1s3")
-toggle_mode = true
-text = "守"
-script = ExtResource("7_lm77l")
-detect = ["Guard"]
+theme_override_font_sizes/font_size = 80
+text = "+"
 
 [connection signal="pressed" from="MC/VBC/HBC/Character" to="." method="_on_character_pressed"]
 [connection signal="pressed" from="MC/VBC/HBC/Die" to="." method="_on_die_pressed"]

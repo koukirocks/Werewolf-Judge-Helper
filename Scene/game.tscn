@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg3xyf5u4p7u2"]
+[gd_scene load_steps=12 format=3 uid="uid://dg3xyf5u4p7u2"]
 
-[ext_resource type="PackedScene" uid="uid://67kdga75t3f6" path="res://Scene/player.tscn" id="1_njge4"]
+[ext_resource type="Script" path="res://code/Game.gd" id="1_btvlb"]
 [ext_resource type="Theme" uid="uid://dji0odtmd2hni" path="res://Style/GeneralButton.tres" id="2_lg52s"]
 [ext_resource type="Texture2D" uid="uid://83beuerw5v8t" path="res://Pictures/Locked.jpg" id="3_j7bxh"]
 [ext_resource type="Texture2D" uid="uid://ogid10jglinq" path="res://Pictures/Unlocked.jpg" id="4_rqrvb"]
+[ext_resource type="StyleBox" uid="uid://c1175ctofda8d" path="res://Style/RoundButton.tres" id="5_pwlhr"]
+[ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="6_vkewt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsxt1"]
 bg_color = Color(1, 1, 1, 1)
@@ -20,6 +22,19 @@ modulate_color = Color(0.6, 0.6, 0.6, 1)
 texture = ExtResource("4_rqrvb")
 modulate_color = Color(0.6, 0.6, 0.6, 1)
 
+[sub_resource type="Theme" id="Theme_34idq"]
+Button/font_sizes/font_size = 60
+Button/styles/disabled = ExtResource("5_pwlhr")
+Button/styles/hover = ExtResource("5_pwlhr")
+Button/styles/normal = ExtResource("5_pwlhr")
+Button/styles/pressed = ExtResource("5_pwlhr")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 60
+Label/fonts/font = ExtResource("6_vkewt")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmolp"]
+bg_color = Color(0.427451, 0.427451, 0.427451, 0.423529)
+
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -27,6 +42,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_btvlb")
 
 [node name="SC" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -35,13 +52,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
 
 [node name="VBC" type="VBoxContainer" parent="SC"]
 layout_mode = 2
 theme_override_constants/separation = 20
-
-[node name="Player" parent="SC/VBC" instance=ExtResource("1_njge4")]
-layout_mode = 2
 
 [node name="PC" type="PanelContainer" parent="SC/VBC"]
 custom_minimum_size = Vector2(720, 0)
@@ -49,43 +65,27 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_hsxt1")
 
-[node name="MarginContainer" type="MarginContainer" parent="SC/VBC/PC"]
+[node name="MC" type="MarginContainer" parent="SC/VBC/PC"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBC" type="HBoxContainer" parent="SC/VBC/PC/MarginContainer"]
+[node name="HBC" type="HBoxContainer" parent="SC/VBC/PC/MC"]
 layout_mode = 2
 theme = ExtResource("2_lg52s")
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Lock" type="Button" parent="SC/VBC/PC/MarginContainer/HBC"]
+[node name="Lock" type="Button" parent="SC/VBC/PC/MC/HBC"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
 toggle_mode = true
 
-[node name="MC" type="MarginContainer" parent="SC/VBC/PC/MarginContainer/HBC/Lock"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Icon" type="Panel" parent="SC/VBC/PC/MarginContainer/HBC/Lock/MC"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_1ubd5")
-
-[node name="MC2" type="MarginContainer" parent="SC/VBC/PC/MarginContainer/HBC/Lock"]
+[node name="MC" type="MarginContainer" parent="SC/VBC/PC/MC/HBC/Lock"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -98,16 +98,87 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Icon" type="Panel" parent="SC/VBC/PC/MarginContainer/HBC/Lock/MC2"]
+[node name="Icon" type="Panel" parent="SC/VBC/PC/MC/HBC/Lock/MC"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1ubd5")
+
+[node name="MC2" type="MarginContainer" parent="SC/VBC/PC/MC/HBC/Lock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Icon" type="Panel" parent="SC/VBC/PC/MC/HBC/Lock/MC2"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_v5kij")
 
-[node name="End" type="Button" parent="SC/VBC/PC/MarginContainer/HBC"]
+[node name="End" type="Button" parent="SC/VBC/PC/MC/HBC"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "結束遊戲"
 
-[node name="Routine" type="Button" parent="SC/VBC/PC/MarginContainer/HBC"]
+[node name="Routine" type="Button" parent="SC/VBC/PC/MC/HBC"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "夜晚流程"
+
+[node name="BoolPopup" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_34idq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dmolp")
+
+[node name="ColorRect" type="ColorRect" parent="BoolPopup"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MC" type="MarginContainer" parent="BoolPopup/ColorRect"]
+layout_mode = 2
+offset_right = 600.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBC" type="VBoxContainer" parent="BoolPopup/ColorRect/MC"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Statement" type="Label" parent="BoolPopup/ColorRect/MC/VBC"]
+layout_mode = 2
+text = "確定？"
+horizontal_alignment = 1
+
+[node name="HBC" type="HBoxContainer" parent="BoolPopup/ColorRect/MC/VBC"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Yes" type="Button" parent="BoolPopup/ColorRect/MC/VBC/HBC"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+text = "確定"
+
+[node name="No" type="Button" parent="BoolPopup/ColorRect/MC/VBC/HBC"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+text = "取消"

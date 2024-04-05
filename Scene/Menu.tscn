@@ -1,10 +1,52 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnoquofvyur08"]
+[gd_scene load_steps=22 format=3 uid="uid://cnoquofvyur08"]
 
 [ext_resource type="Script" path="res://code/Menu.gd" id="1_olt0t"]
 [ext_resource type="LabelSettings" uid="uid://cpdydlrjq4lja" path="res://Black_label.tres" id="1_x4d8q"]
 [ext_resource type="Script" path="res://code/PlayerCountSlider.gd" id="2_plm83"]
 [ext_resource type="PackedScene" uid="uid://ckyx4c0lfc0fm" path="res://Scene/character.tscn" id="3_80dwd"]
 [ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="5_ryjlr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhkjm"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rm22x"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ldx4"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wi5tl"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6csb"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_jilj5"]
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("5_ryjlr")
+Button/styles/disabled = SubResource("StyleBoxFlat_nhkjm")
+Button/styles/focus = SubResource("StyleBoxFlat_rm22x")
+Button/styles/hover = SubResource("StyleBoxFlat_3ldx4")
+Button/styles/normal = SubResource("StyleBoxFlat_wi5tl")
+Button/styles/pressed = SubResource("StyleBoxFlat_a6csb")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7j2o"]
 bg_color = Color(1, 1, 1, 1)
@@ -24,13 +66,25 @@ bg_color = Color(0, 0, 0.537255, 1)
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuf6c"]
-bg_color = Color(0.764706, 0.764706, 0.764706, 1)
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xo8yh"]
 bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biaf3"]
 bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_x8yji"]
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -43,12 +97,6 @@ Button/styles/focus = SubResource("StyleBoxFlat_oqpeq")
 Button/styles/hover = SubResource("StyleBoxFlat_uuf6c")
 Button/styles/normal = SubResource("StyleBoxFlat_xo8yh")
 Button/styles/pressed = SubResource("StyleBoxFlat_biaf3")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vm4ue"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uojhe"]
-bg_color = Color(0, 0.615686, 0, 1)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -66,13 +114,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-horizontal_scroll_mode = 0
+horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
 [node name="VBox1" type="VBoxContainer" parent="Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = SubResource("Theme_jilj5")
 
 [node name="Player" type="PanelContainer" parent="Scroll/VBox1"]
 custom_minimum_size = Vector2(720, 120)
@@ -298,18 +347,8 @@ focus_mode = 0
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("5_ryjlr")
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_vm4ue")
 text = "開始遊戲"
-
-[node name="Police" type="Button" parent="Scroll/VBox1/Third Party2/Margin2/HBox3"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 40
-theme_override_styles/pressed = SubResource("StyleBoxFlat_uojhe")
-toggle_mode = true
-text = "上警"
 
 [connection signal="drag_ended" from="Scroll/VBox1/Player/MC/Vbox2/PlayerCountSlider" to="." method="_on_player_count_slider_drag_ended"]
 [connection signal="value_changed" from="Scroll/VBox1/Player/MC/Vbox2/PlayerCountSlider" to="Scroll/VBox1/Player/MC/Vbox2/PlayerCountSlider" method="_on_value_changed"]
+[connection signal="pressed" from="Scroll/VBox1/Third Party2/Margin2/HBox3/Start" to="." method="_on_start_pressed"]

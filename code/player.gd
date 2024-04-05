@@ -39,11 +39,14 @@ var ColorId={
 }
 var Colors=["#FFFFFF","#0000FF","#850000","#00FF00"]
 var PlayerId=1
-# Called when the node enters the scene tree for the first time.
-func _ready():
+
+func initialize(_Characters,_PlayerId):
+	Characters=_Characters
+	PlayerId=_PlayerId
 	$MC/VBC/HBC/ID.text=str(PlayerId)+"."
 	$MC/VBC/HBC/Character.text=Translate[Characters[0]]
 	$MC/VBC/HBC/Character.add_theme_color_override("font_color",Color(Colors[0]))
+	$MC/VBC/HBC/ID.add_theme_font_size_override("font_size",120/len($MC/VBC/HBC/ID.text))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
