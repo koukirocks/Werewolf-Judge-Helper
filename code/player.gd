@@ -44,23 +44,31 @@ func initialize(_Characters,_PlayerId):
 	Characters=_Characters
 	PlayerId=_PlayerId
 	$MC/VBC/HBC/ID.text=str(PlayerId)+"."
+	$PC/MC2/HBC/ID.text=str(PlayerId)+"號玩家"
 	$MC/VBC/HBC/Character.text=Translate[Characters[0]]
 	$MC/VBC/HBC/Character.add_theme_color_override("font_color",Color(Colors[0]))
-	$MC/VBC/HBC/ID.add_theme_font_size_override("font_size",120/len($MC/VBC/HBC/ID.text))
+	$MC/VBC/HBC/ID.add_theme_font_size_override("font_size",float(120)/len($MC/VBC/HBC/ID.text))
+	add_to_group("Players")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func control_lock(locked):
+	if locked:
+		$MC/VBC/HBC/IsPolice.mouse_filter = MOUSE_FILTER_IGNORE
+		$MC/VBC/HBC/IsCouple.mouse_filter = MOUSE_FILTER_IGNORE
+		$MC/VBC/HBC/Character.mouse_filter = MOUSE_FILTER_IGNORE
+	else:
+		$MC/VBC/HBC/IsPolice.mouse_filter = MOUSE_FILTER_PASS
+		$MC/VBC/HBC/IsCouple.mouse_filter = MOUSE_FILTER_PASS
+		$MC/VBC/HBC/Character.mouse_filter = MOUSE_FILTER_PASS
 
-signal _die(Id)
+func AskBool(statement):
+	return await $"../../..".bool_popup(statement)
 
 func _on_die_pressed():
-	_die.emit(PlayerId)
-
-func _on_die_confirmed(Id):
-	if Id==PlayerId:
-		visible=false
-
+	var sure = await AskBool("確定 %s號玩家 死亡？" % PlayerId)
+	if sure:
+		$PC.visible = true
+		$MC/VBC/HBC/IsPolice.button_pressed = false
+		$MC/VBC/GridContainer.visible = false
 
 func _on_character_pressed():
 	if CanChange:
@@ -70,3 +78,17 @@ func _on_character_pressed():
 	$MC/VBC/HBC/Character.add_theme_color_override("font_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
 	$MC/VBC/HBC/Character.add_theme_color_override("font_pressed_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
 	$MC/VBC/HBC/Character.add_theme_color_override("font_hover_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
+
+func _on_cure_pressed():
+	var sure = await AskBool("確定使用解藥？")
+	if sure:
+		$"MC/VBC/HBC/Witch Inv/Cure".visible = false
+		if !$"MC/VBC/HBC/Witch Inv/Poison".visible and !$"MC/VBC/HBC/Witch Inv/Cure".visible:
+			$"MC/VBC/HBC/Witch Inv".visible = false
+
+func _on_poison_pressed():
+	var sure = await AskBool("確定使用毒藥？")
+	if sure:
+		$"MC/VBC/HBC/Witch Inv/Poison".visible = false
+		if !$"MC/VBC/HBC/Witch Inv/Poison".visible and !$"MC/VBC/HBC/Witch Inv/Cure".visible:
+			$"MC/VBC/HBC/Witch Inv".visible = false

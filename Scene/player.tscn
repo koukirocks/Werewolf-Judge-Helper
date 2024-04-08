@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://67kdga75t3f6"]
+[gd_scene load_steps=22 format=3 uid="uid://67kdga75t3f6"]
 
 [ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="1_h7p33"]
 [ext_resource type="Texture2D" uid="uid://dxntyboy08okh" path="res://Pictures/Badge.png" id="2_eoq3k"]
@@ -76,6 +76,16 @@ Button/styles/hover = SubResource("StyleBoxFlat_3ldx4")
 Button/styles/normal = SubResource("StyleBoxFlat_wi5tl")
 Button/styles/pressed = SubResource("StyleBoxFlat_a6csb")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aso48"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 0.690196)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Theme" id="Theme_f0iob"]
+Label/colors/font_color = Color(1, 0, 0.164706, 1)
+
 [node name="Player" type="PanelContainer"]
 anchors_preset = 10
 anchor_right = 1.0
@@ -136,6 +146,7 @@ mouse_filter = 1
 text = "村民"
 
 [node name="Witch Inv" type="VBoxContainer" parent="MC/VBC/HBC"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_t8nir")
 
@@ -179,5 +190,36 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "+"
 
+[node name="PC" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aso48")
+
+[node name="MC2" type="MarginContainer" parent="PC"]
+layout_mode = 2
+theme = SubResource("Theme_f0iob")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBC" type="HBoxContainer" parent="PC/MC2"]
+layout_mode = 2
+theme = SubResource("Theme_uqy4v")
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ID" type="Label" parent="PC/MC2/HBC"]
+layout_mode = 2
+text = "1 號玩家"
+
+[node name="Status" type="Label" parent="PC/MC2/HBC"]
+layout_mode = 2
+text = "死亡"
+
 [connection signal="pressed" from="MC/VBC/HBC/Character" to="." method="_on_character_pressed"]
+[connection signal="pressed" from="MC/VBC/HBC/Character" to="MC/VBC/HBC/Witch Inv" method="_on_character_pressed"]
+[connection signal="pressed" from="MC/VBC/HBC/Witch Inv/Cure" to="." method="_on_cure_pressed"]
+[connection signal="pressed" from="MC/VBC/HBC/Witch Inv/Poison" to="." method="_on_poison_pressed"]
 [connection signal="pressed" from="MC/VBC/HBC/Die" to="." method="_on_die_pressed"]
