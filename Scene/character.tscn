@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckyx4c0lfc0fm"]
+[gd_scene load_steps=2 format=3 uid="uid://ckyx4c0lfc0fm"]
 
-[ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="1_t6ep2"]
 [ext_resource type="Script" path="res://code/character.gd" id="2_ca6ld"]
 
 [node name="Character" type="Button"]
@@ -10,7 +9,6 @@ offset_bottom = 120.0
 focus_mode = 0
 mouse_filter = 1
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("1_t6ep2")
 theme_override_font_sizes/font_size = 50
 toggle_mode = true
 action_mode = 0

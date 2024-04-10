@@ -4,7 +4,6 @@ var sequence = [
 	["Thief","盜賊選牌",1],
 	["Cupid","邱比特連情侶",1],
 	["Cupid","情侶確認身分",1],
-	["Grave","守墓人查死",2],
 	["Dreamer","攝夢人攝夢",2],
 	["Guard","守衛守護人",2],
 	["MUST","狼人殺人",2],
@@ -15,10 +14,11 @@ var sequence = [
 	["Witch","女巫救人毒人",2],
 	["Prophet","預言家查驗身分",2],
 	["Psychic","通靈師查驗身分",2],
+	["Grave","守墓人查死",2],
+	["Crow","烏鴉詛咒",2],
 	["Hunter","獵人能否開槍",2],
 	["King","狼王能否開槍",2],
 	["Black","黑狼王能否開槍",2],
-	["Crow","烏鴉詛咒",2],
 	["Idiot","白癡(調查身分)",1],
 	["Knight","騎士(調查身分)",1],
 	["Bomber","炸彈人(調查身分)",1],
@@ -31,7 +31,6 @@ var PlayerCount=0
 var PlayerScene = preload("res://Scene/player.tscn")
 
 func init():
-	$SC2.size = Vector2(720,1280)
 	var Player=PlayerScene.instantiate()
 	Player.name="P1"
 	get_node("SC/VBC").add_child(Player)
@@ -88,6 +87,3 @@ signal end_game
 
 func _on_end_pressed():
 	end_game.emit()
-
-func _on_routine_pressed():
-	$AP.play("Switch")

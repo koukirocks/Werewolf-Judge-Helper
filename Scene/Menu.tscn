@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://cnoquofvyur08"]
+[gd_scene load_steps=21 format=3 uid="uid://cnoquofvyur08"]
 
 [ext_resource type="Script" path="res://code/Menu.gd" id="1_olt0t"]
 [ext_resource type="LabelSettings" uid="uid://cpdydlrjq4lja" path="res://Black_label.tres" id="1_x4d8q"]
 [ext_resource type="Script" path="res://code/PlayerCountSlider.gd" id="2_plm83"]
 [ext_resource type="PackedScene" uid="uid://ckyx4c0lfc0fm" path="res://Scene/character.tscn" id="3_80dwd"]
-[ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="5_ryjlr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhkjm"]
 corner_radius_top_left = 10
@@ -41,7 +40,6 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_jilj5"]
 Button/font_sizes/font_size = 50
-Button/fonts/font = ExtResource("5_ryjlr")
 Button/styles/disabled = SubResource("StyleBoxFlat_nhkjm")
 Button/styles/focus = SubResource("StyleBoxFlat_rm22x")
 Button/styles/hover = SubResource("StyleBoxFlat_3ldx4")
@@ -92,19 +90,22 @@ Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
-Button/fonts/font = ExtResource("5_ryjlr")
 Button/styles/focus = SubResource("StyleBoxFlat_oqpeq")
 Button/styles/hover = SubResource("StyleBoxFlat_uuf6c")
 Button/styles/normal = SubResource("StyleBoxFlat_xo8yh")
 Button/styles/pressed = SubResource("StyleBoxFlat_biaf3")
 
 [node name="Menu" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_olt0t")
 
 [node name="Scroll" type="ScrollContainer" parent="."]
@@ -396,7 +397,6 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("5_ryjlr")
 theme_override_font_sizes/font_size = 40
 text = "開始遊戲"
 

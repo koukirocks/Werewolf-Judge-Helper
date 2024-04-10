@@ -5,9 +5,11 @@ enum {
 }
 
 func _ready():
-	$"Transition".size=Vector2(720,1280)
+	pass
 
 func _on_menu_start_game(Chosen):
+	$"Transition".size=$Menu.size
+	$"Transition".position.y=$Menu.position.y
 	var anime = $Transition/AP.get_animation("Start Transition")
 	anime.track_set_enabled(1,true)
 	anime.track_set_enabled(2,false)
@@ -28,6 +30,8 @@ func change_scene2():
 	$"Game".visible=false
 
 func _on_game_end_game():
+	$"Transition".size=$Game.size
+	$"Transition".position.y=$Game.position.y
 	var anime = $Transition/AP.get_animation("Start Transition")
 	anime.track_set_enabled(1,false)
 	anime.track_set_enabled(2,true)

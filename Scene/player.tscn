@@ -1,17 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://67kdga75t3f6"]
+[gd_scene load_steps=21 format=3 uid="uid://67kdga75t3f6"]
 
-[ext_resource type="FontFile" uid="uid://b2qpnj63ap3tq" path="res://font/Roboto-Medium.ttf" id="1_h7p33"]
-[ext_resource type="Texture2D" uid="uid://dxntyboy08okh" path="res://Pictures/Badge.png" id="2_eoq3k"]
+[ext_resource type="Texture2D" uid="uid://d36yp82wxnate" path="res://Pictures/Badge.png" id="2_eoq3k"]
 [ext_resource type="Script" path="res://code/player.gd" id="2_h6ilg"]
 [ext_resource type="StyleBox" uid="uid://c1175ctofda8d" path="res://Style/RoundButton.tres" id="2_msahj"]
 [ext_resource type="StyleBox" uid="uid://4un1gb1lgsec" path="res://Style/IsPolice.tres" id="2_x3upy"]
-[ext_resource type="Texture2D" uid="uid://dyqljbiv83ikt" path="res://Pictures/heart.png" id="3_b2kke"]
+[ext_resource type="Texture2D" uid="uid://q5b6gjx3trua" path="res://Pictures/heart.png" id="3_b2kke"]
 [ext_resource type="Script" path="res://code/Inv.gd" id="7_t8nir"]
 
 [sub_resource type="Theme" id="Theme_1bpni"]
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 60
-Label/fonts/font = ExtResource("1_h7p33")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl26o"]
 bg_color = Color(1, 1, 1, 1)
@@ -24,7 +22,6 @@ corner_radius_bottom_left = 30
 
 [sub_resource type="Theme" id="Theme_uqy4v"]
 Button/font_sizes/font_size = 40
-Button/fonts/font = ExtResource("1_h7p33")
 Button/styles/disabled = SubResource("StyleBoxEmpty_2brl0")
 Button/styles/focus = ExtResource("2_msahj")
 Button/styles/hover = ExtResource("2_msahj")
@@ -69,7 +66,6 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_2n3ip"]
 Button/font_sizes/font_size = 50
-Button/fonts/font = ExtResource("1_h7p33")
 Button/styles/disabled = SubResource("StyleBoxFlat_nhkjm")
 Button/styles/focus = SubResource("StyleBoxFlat_rm22x")
 Button/styles/hover = SubResource("StyleBoxFlat_3ldx4")
@@ -176,16 +172,16 @@ theme_override_colors/font_disabled_color = Color(0.619608, 0, 0, 1)
 text = "死亡"
 
 [node name="GridContainer" type="GridContainer" parent="MC/VBC"]
-custom_minimum_size = Vector2(600, 0)
+custom_minimum_size = Vector2(630, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme = SubResource("Theme_2n3ip")
-theme_override_constants/h_separation = 25
+theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-columns = 4
+columns = 5
 
 [node name="Add" type="Button" parent="MC/VBC/GridContainer"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(110, 110)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
