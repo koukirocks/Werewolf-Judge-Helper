@@ -1,0 +1,31 @@
+Good:
+	[prophet]
+	[witch]
+	[hunter]
+	[knight]
+	[idiot]
+	[guard]
+	[witcher]
+	[grave]
+	[crow]
+	[bear]
+	[dreamer]
+	[psychic]
+
+Bad:
+	[wolf]
+	[king]
+	[black]
+	[white]
+	[snow]
+	[blood]
+	[devil]
+
+Third:
+	[cupid]
+	[bomber]
+	[thief]
+	[cursed]
+
+To Do :
+	MultiPopup

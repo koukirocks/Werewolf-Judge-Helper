@@ -217,6 +217,40 @@ text = "白癡"
 layout_mode = 2
 text = "守衛"
 
+[node name="Witcher" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "獵魔
+人"
+
+[node name="Grave" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "守墓
+人"
+
+[node name="Crow" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+text = "烏鴉"
+
+[node name="Bear" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "馴熊
+師"
+
+[node name="Dreamer" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "攝夢
+人"
+
+[node name="Psychic" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "通靈
+師"
+
 [node name="Werewolf" type="PanelContainer" parent="Scroll/VBox1"]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
@@ -274,6 +308,18 @@ text = "黑
 layout_mode = 2
 text = "雪狼"
 
+[node name="Blood" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "血月
+使者"
+
+[node name="Devil" parent="Scroll/VBox1/Werewolf/Margin2/VBox3/Buttons" groups=["Characters", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "惡靈
+騎士"
+
 [node name="Third Party" type="PanelContainer" parent="Scroll/VBox1"]
 layout_mode = 2
 mouse_filter = 1
@@ -321,6 +367,11 @@ size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 40
 text = "炸彈
 客"
+
+[node name="Cursed" parent="Scroll/VBox1/Third Party/Margin2/VBox3/Buttons" groups=["Characters", "Third Party", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "咒狐"
 
 [node name="Third Party2" type="PanelContainer" parent="Scroll/VBox1"]
 layout_mode = 2

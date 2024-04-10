@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dg3xyf5u4p7u2"]
+[gd_scene load_steps=17 format=3 uid="uid://dg3xyf5u4p7u2"]
 
 [ext_resource type="Script" path="res://code/Game.gd" id="1_btvlb"]
 [ext_resource type="Theme" uid="uid://dji0odtmd2hni" path="res://Style/GeneralButton.tres" id="2_lg52s"]
@@ -43,13 +43,72 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="Animation" id="Animation_5km2l"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SC:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SC2:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(720, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_4cwmg"]
+resource_name = "Switch"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SC:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.75, 0, -720, -0.75, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SC2:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(720, -0.25, 0, 0.75, 0, 0, -0.75, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0lpb"]
+_data = {
+"RESET": SubResource("Animation_5km2l"),
+"Switch": SubResource("Animation_4cwmg")
+}
+
 [node name="Game" type="Control"]
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("1_btvlb")
 
@@ -251,6 +310,26 @@ text = "查"
 layout_mode = 2
 text = "守"
 
+[node name="SC2" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 720.0
+offset_right = 1440.0
+offset_bottom = 1280.0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SC2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AP" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s0lpb")
+}
+
 [connection signal="pressed" from="SC/VBC/PC/MC/HBC/Lock" to="." method="_on_lock_pressed"]
+[connection signal="pressed" from="SC/VBC/PC/MC/HBC/End" to="." method="_on_end_pressed"]
+[connection signal="pressed" from="SC/VBC/PC/MC/HBC/Routine" to="." method="_on_routine_pressed"]
 [connection signal="pressed" from="BoolPopup/Window/MC/VBC/HBC/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="BoolPopup/Window/MC/VBC/HBC/No" to="." method="_on_no_pressed"]
