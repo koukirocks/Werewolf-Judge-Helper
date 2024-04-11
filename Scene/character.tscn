@@ -14,5 +14,4 @@ toggle_mode = true
 text = "職業"
 script = ExtResource("2_ca6ld")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="toggled" from="." to="." method="_on_toggled"]
