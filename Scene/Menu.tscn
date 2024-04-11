@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cnoquofvyur08"]
+[gd_scene load_steps=23 format=3 uid="uid://cnoquofvyur08"]
 
 [ext_resource type="Script" path="res://code/Menu.gd" id="1_olt0t"]
 [ext_resource type="LabelSettings" uid="uid://cpdydlrjq4lja" path="res://Black_label.tres" id="1_x4d8q"]
 [ext_resource type="Script" path="res://code/PlayerCountSlider.gd" id="2_plm83"]
+[ext_resource type="Texture2D" uid="uid://cp1t6cagorhpx" path="res://Pictures/werewolf_icon_50x50.png" id="3_1fpah"]
 [ext_resource type="PackedScene" uid="uid://ckyx4c0lfc0fm" path="res://Scene/character.tscn" id="3_80dwd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhkjm"]
@@ -48,6 +49,10 @@ Button/styles/pressed = SubResource("StyleBoxFlat_a6csb")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7j2o"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xbiii"]
+color = Color(0.73655, 0, 0.0012591, 1)
+thickness = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdexo"]
 bg_color = Color(0, 1, 1, 1)
@@ -117,6 +122,7 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
+scroll_deadzone = 20
 
 [node name="VBox1" type="VBoxContainer" parent="Scroll"]
 layout_mode = 2
@@ -152,10 +158,14 @@ custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+focus_mode = 0
+theme_override_icons/grabber = ExtResource("3_1fpah")
+theme_override_icons/grabber_highlight = ExtResource("3_1fpah")
+theme_override_styles/slider = SubResource("StyleBoxLine_xbiii")
 min_value = 5.0
-max_value = 20.0
+max_value = 30.0
 value = 5.0
-tick_count = 16
+tick_count = 26
 ticks_on_borders = true
 script = ExtResource("2_plm83")
 

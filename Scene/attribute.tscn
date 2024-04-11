@@ -9,5 +9,6 @@ offset_bottom = 8.0
 focus_mode = 0
 text = "刀"
 script = ExtResource("1_62o1a")
+needs = ["MUST"]
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

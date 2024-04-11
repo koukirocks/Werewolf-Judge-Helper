@@ -14,7 +14,6 @@ config/name="Werewolf Judge Helper"
 run/main_scene="res://Scene/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
-boot_splash/image="res://Pictures/Rickroll.png"
 config/icon="res://icon.svg"
 
 [display]
