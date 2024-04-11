@@ -58,12 +58,25 @@ var ColorId={
 var Colors=["#FFFFFF","#0000FF","#850000","#00FF00"]
 var PlayerId=1
 
+func dfs(parent):
+	for node in parent.get_children(true):
+		print(node.name)
+		dfs(node)
+	print("finish")
+
 func initialize(_Characters,_PlayerId):
 	Characters=_Characters
 	PlayerId=_PlayerId
 	$MC/VBC/HBC/ID.text=str(PlayerId)+"."
 	$PC/MC2/HBC/ID.text=str(PlayerId)+"號玩家"
-	$MC/VBC/HBC/Character.text=Translate[Characters[0]]
+	var ButtonPopup = $MC/VBC/HBC/Character.get_popup()
+	var id=0
+	for Char in Characters:
+		$MC/VBC/HBC/Character.add_item(Translate[Char])
+		ButtonPopup.set_item_as_radio_checkable(id,false)
+		id+=1
+	#dfs(ButtonPopup)
+	$MC/VBC/HBC/Character.selected=0
 	$MC/VBC/HBC/Character.add_theme_color_override("font_color",Color(Colors[0]))
 	$MC/VBC/HBC/ID.add_theme_font_size_override("font_size",float(120)/len($MC/VBC/HBC/ID.text))
 	add_to_group("Players")
@@ -91,15 +104,6 @@ func _on_die_pressed():
 		$MC/VBC/HBC/IsPolice.button_pressed = false
 		$MC/VBC/GridContainer.visible = false
 
-func _on_character_pressed():
-	if CanChange:
-		CurrentCharacter+=1
-		CurrentCharacter%=len(Characters)
-	$MC/VBC/HBC/Character.text=Translate[Characters[CurrentCharacter]]
-	$MC/VBC/HBC/Character.add_theme_color_override("font_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
-	$MC/VBC/HBC/Character.add_theme_color_override("font_pressed_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
-	$MC/VBC/HBC/Character.add_theme_color_override("font_hover_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
-
 func _on_cure_pressed():
 	var sure = await AskBool("確定使用解藥？")
 	if sure:
@@ -122,3 +126,9 @@ func _on_add_pressed():
 	tag.status = tag.IN_PLAYER_TAG
 	$MC/VBC/GridContainer.add_child(tag)
 	
+
+
+func _on_character_item_selected(index):
+	$MC/VBC/HBC/Character.add_theme_color_override("font_color",Color(Colors[ColorId[Characters[index]]]))
+	$MC/VBC/HBC/Character.add_theme_color_override("font_pressed_color",Color(Colors[ColorId[Characters[index]]]))
+	$MC/VBC/HBC/Character.add_theme_color_override("font_hover_color",Color(Colors[ColorId[Characters[index]]]))

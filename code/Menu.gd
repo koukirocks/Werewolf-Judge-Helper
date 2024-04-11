@@ -6,9 +6,6 @@ func _ready():
 		node.character_chosen.connect(_on_character_chosen)
 		node.character_removed.connect(_on_character_removed)
 
-func _process(_delta):
-	pass
-
 var PlayerCount=5
 var Characters=["Villager"]
 func _on_player_count_slider_drag_ended(_value_changed):
