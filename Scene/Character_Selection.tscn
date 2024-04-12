@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmtmrwojmltq8"]
+
+[ext_resource type="Script" path="res://code/Character_Selection.gd" id="1_oo3i1"]
+
+[node name="Character_Selection" type="Button"]
+custom_minimum_size = Vector2(560, 100)
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+mouse_filter = 1
+script = ExtResource("1_oo3i1")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -17,6 +17,8 @@ func _on_menu_start_game(Chosen):
 	$"Game".Characters=Chosen
 	for node in get_tree().get_nodes_in_group("Attributes"):
 		node.initialize()
+	for node in get_tree().get_nodes_in_group("Dropdown"):
+		node.initialize()
 
 func change_scene():
 	$"Menu".visible=false

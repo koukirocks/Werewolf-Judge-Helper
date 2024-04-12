@@ -1,0 +1,83 @@
+extends Node
+
+var sequence = [
+	["Thief","盜賊選牌",1],
+	["Cupid","邱比特連情侶",1],
+	["Cupid","情侶確認身分",1],
+	["Dreamer","攝夢人攝夢",2],
+	["Guard","守衛守護人",2],
+	["MUST","狼人殺人",2],
+	["Snow","雪狼(調查身分)",1],
+	["Blood","血月使者(調查身分)",1],
+	["Devil","惡靈騎士(調查身分)",1],
+	["Witcher","獵魔人撞人",2],
+	["Witch","女巫救人毒人",2],
+	["Prophet","預言家查驗身分",2],
+	["Psychic","通靈師查驗身分",2],
+	["Grave","守墓人查死",2],
+	["Crow","烏鴉詛咒",2],
+	["Hunter","獵人能否開槍",2],
+	["King","狼王能否開槍",2],
+	["Black","黑狼王能否開槍",2],
+	["Idiot","白癡(調查身分)",1],
+	["Knight","騎士(調查身分)",1],
+	["Bomber","炸彈人(調查身分)",1],
+	["Cursed","咒狐(調查身分)",1],
+	["Bear","馴熊師(調查身分)",1]
+]
+
+var ColorId={
+	"Villager":0,
+	"Prophet":1,
+	"Witch":1,
+	"Hunter":1,
+	"Knight":1,
+	"Idiot":1,
+	"Guard":1,
+	"Witcher":1,
+	"Grave":1,
+	"Crow":1,
+	"Bear":1,
+	"Dreamer":1,
+	"Psychic":1,
+	"Wolf":2,
+	"King":2,
+	"Black":2,
+	"White":2,
+	"Snow":2,
+	"Blood":2,
+	"Devil":2,
+	"Cupid":3,
+	"Thief":3,
+	"Bomber":3,
+	"Cursed":3
+}
+
+var Translate={
+	"Villager":"村民",
+	"Prophet":"預言家",
+	"Witch":"女巫",
+	"Hunter":"獵人",
+	"Knight":"騎士",
+	"Idiot":"白癡",
+	"Guard":"守衛",
+	"Witcher":"獵魔人",
+	"Grave":"守墓人",
+	"Crow":"烏鴉",
+	"Bear":"馴熊師",
+	"Dreamer":"攝夢人",
+	"Psychic":"通靈師",
+	"Wolf":"小狼",
+	"King":"狼王",
+	"Black":"黑狼王",
+	"White":"白狼王",
+	"Snow":"雪狼",
+	"Blood":"血月使者",
+	"Devil":"惡靈騎士",
+	"Cupid":"邱比特",
+	"Thief":"盜賊",
+	"Bomber":"炸彈客",
+	"Cursed":"咒狐"
+}
+
+var Colors=["#FFFFFF","#0000FF","#850000","#00FF00"]

@@ -13,3 +13,13 @@ func _on_character_pressed():
 			visible = false
 	else:
 		visible=false
+
+
+func _on_player_switched_char(newname):
+	if newname=="Witch":
+		if $Cure.visible or $Poison.visible:
+			visible=true
+		else:
+			visible = false
+	else:
+		visible=false

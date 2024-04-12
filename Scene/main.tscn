@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwt2adxh4m72l"]
+[gd_scene load_steps=9 format=3 uid="uid://bwt2adxh4m72l"]
 
 [ext_resource type="Script" path="res://code/main.gd" id="1_66sl0"]
 [ext_resource type="PackedScene" uid="uid://cnoquofvyur08" path="res://Scene/Menu.tscn" id="1_twlli"]
 [ext_resource type="PackedScene" uid="uid://dg3xyf5u4p7u2" path="res://Scene/game.tscn" id="3_sqhv6"]
 [ext_resource type="Texture2D" uid="uid://b66ydo141bkia" path="res://Pictures/werewolf icon.png" id="3_yoikf"]
+[ext_resource type="Script" path="res://code/GameConstant.gd" id="5_8837h"]
 
 [sub_resource type="Animation" id="Animation_nv17d"]
 length = 0.001
@@ -123,6 +124,9 @@ texture = ExtResource("3_yoikf")
 libraries = {
 "": SubResource("AnimationLibrary_40be7")
 }
+
+[node name="GameConstant" type="Node" parent="."]
+script = ExtResource("5_8837h")
 
 [connection signal="start_game" from="Menu" to="." method="_on_menu_start_game"]
 [connection signal="end_game" from="Game" to="." method="_on_game_end_game"]

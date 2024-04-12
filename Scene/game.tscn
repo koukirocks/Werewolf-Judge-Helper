@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg3xyf5u4p7u2"]
+[gd_scene load_steps=14 format=3 uid="uid://dg3xyf5u4p7u2"]
 
 [ext_resource type="Script" path="res://code/Game.gd" id="1_btvlb"]
 [ext_resource type="Theme" uid="uid://dji0odtmd2hni" path="res://Style/GeneralButton.tres" id="2_lg52s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cijv1kc7xubc7" path="res://Pictures/Unlocked.jpg" id="4_rqrvb"]
 [ext_resource type="StyleBox" uid="uid://c1175ctofda8d" path="res://Style/RoundButton.tres" id="5_pwlhr"]
 [ext_resource type="PackedScene" uid="uid://bpxv6s5u6apxa" path="res://Scene/attribute.tscn" id="7_706ef"]
+[ext_resource type="PackedScene" uid="uid://bmtmrwojmltq8" path="res://Scene/Character_Selection.tscn" id="7_jnoi7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsxt1"]
 bg_color = Color(1, 1, 1, 1)
@@ -293,8 +294,122 @@ text = "封"
 layout_mode = 2
 text = "死"
 
+[node name="ListPopup" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+offset_right = 720.0
+offset_bottom = 1280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_34idq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dmolp")
+
+[node name="Window" type="Panel" parent="ListPopup"]
+custom_minimum_size = Vector2(600, 700)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_1jiu4")
+
+[node name="MC" type="MarginContainer" parent="ListPopup/Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SC" type="ScrollContainer" parent="ListPopup/Window/MC"]
+layout_mode = 2
+vertical_scroll_mode = 3
+scroll_deadzone = 20
+
+[node name="VBC" type="VBoxContainer" parent="ListPopup/Window/MC/SC"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Villager" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Prophet" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Witch" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Hunter" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Knight" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Idiot" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Guard" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Witcher" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Grave" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Crow" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Bear" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Dreamer" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Psychic" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Wolf" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="King" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+text = "
+"
+
+[node name="White" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Black" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Snow" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Blood" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Devil" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Cupid" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Thief" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Bomber" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
+[node name="Cursed" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+
 [connection signal="pressed" from="SC/VBC/PC/MC/HBC/Lock" to="." method="_on_lock_pressed"]
 [connection signal="pressed" from="SC/VBC/PC/MC/HBC/End" to="." method="_on_end_pressed"]
-[connection signal="pressed" from="SC/VBC/PC/MC/HBC/Routine" to="." method="_on_routine_pressed"]
 [connection signal="pressed" from="BoolPopup/Window/MC/VBC/HBC/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="BoolPopup/Window/MC/VBC/HBC/No" to="." method="_on_no_pressed"]

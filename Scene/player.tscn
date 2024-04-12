@@ -138,6 +138,7 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+mouse_filter = 1
 
 [node name="Witch Inv" type="VBoxContainer" parent="MC/VBC/HBC"]
 visible = false
@@ -214,8 +215,8 @@ text = "1 號玩家"
 layout_mode = 2
 text = "死亡"
 
+[connection signal="switched_char" from="." to="MC/VBC/HBC/Witch Inv" method="_on_player_switched_char"]
 [connection signal="pressed" from="MC/VBC/HBC/Character" to="." method="_on_character_pressed"]
-[connection signal="pressed" from="MC/VBC/HBC/Character" to="MC/VBC/HBC/Witch Inv" method="_on_character_pressed"]
 [connection signal="pressed" from="MC/VBC/HBC/Witch Inv/Cure" to="." method="_on_cure_pressed"]
 [connection signal="pressed" from="MC/VBC/HBC/Witch Inv/Poison" to="." method="_on_poison_pressed"]
 [connection signal="pressed" from="MC/VBC/HBC/Die" to="." method="_on_die_pressed"]

@@ -1,64 +1,19 @@
 extends PanelContainer
 
 var CanChange=true
-var Characters=["Villager","Witch","White","Cupid","Guard"]
+var Characters=["Villager"]
 var CurrentCharacter=0
-var Translate={
-	"Villager":"村民",
-	"Prophet":"預言家",
-	"Witch":"女巫",
-	"Hunter":"獵人",
-	"Knight":"騎士",
-	"Idiot":"白癡",
-	"Guard":"守衛",
-	"Witcher":"獵魔人",
-	"Grave":"守墓人",
-	"Crow":"烏鴉",
-	"Bear":"馴熊師",
-	"Dreamer":"攝夢人",
-	"Psychic":"通靈師",
-	"Wolf":"小狼",
-	"King":"狼王",
-	"Black":"黑狼王",
-	"White":"白狼王",
-	"Snow":"雪狼",
-	"Blood":"血月使者",
-	"Devil":"惡靈騎士",
-	"Cupid":"邱比特",
-	"Thief":"盜賊",
-	"Bomber":"炸彈客",
-	"Cursed":"咒狐"
-}
-var ColorId={
-	"Villager":0,
-	"Prophet":1,
-	"Witch":1,
-	"Hunter":1,
-	"Knight":1,
-	"Idiot":1,
-	"Guard":1,
-	"Witcher":1,
-	"Grave":1,
-	"Crow":1,
-	"Bear":1,
-	"Dreamer":1,
-	"Psychic":1,
-	"Wolf":2,
-	"King":2,
-	"Black":2,
-	"White":2,
-	"Snow":2,
-	"Blood":2,
-	"Devil":2,
-	"Cupid":3,
-	"Thief":3,
-	"Bomber":3,
-	"Cursed":3
-}
-var Colors=["#FFFFFF","#0000FF","#850000","#00FF00"]
+var Colors
 var PlayerId=1
+var Translate
+var ColorId
 
 func initialize(_Characters,_PlayerId):
+	$"MC/VBC/HBC/Witch Inv/Cure".visible = true
+	$"MC/VBC/HBC/Witch Inv/Poison".visible = true
+	Translate = $"/root/Main/GameConstant".Translate
+	ColorId = $"/root/Main/GameConstant".ColorId
+	Colors = $"/root/Main/GameConstant".Colors
 	Characters=_Characters
 	PlayerId=_PlayerId
 	$MC/VBC/HBC/ID.text=str(PlayerId)+"."
@@ -84,6 +39,9 @@ func AskBool(statement):
 func AskMulti():
 	return await $"../../..".multi_popup()
 
+func AskList():
+	return await $"../../..".list_popup()
+
 func _on_die_pressed():
 	var sure = await AskBool("確定 %s號玩家 死亡？" % PlayerId)
 	if sure:
@@ -91,14 +49,15 @@ func _on_die_pressed():
 		$MC/VBC/HBC/IsPolice.button_pressed = false
 		$MC/VBC/GridContainer.visible = false
 
+signal switched_char(newname)
+
 func _on_character_pressed():
-	if CanChange:
-		CurrentCharacter+=1
-		CurrentCharacter%=len(Characters)
-	$MC/VBC/HBC/Character.text=Translate[Characters[CurrentCharacter]]
-	$MC/VBC/HBC/Character.add_theme_color_override("font_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
-	$MC/VBC/HBC/Character.add_theme_color_override("font_pressed_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
-	$MC/VBC/HBC/Character.add_theme_color_override("font_hover_color",Color(Colors[ColorId[Characters[CurrentCharacter]]]))
+	var newname = await AskList()
+	$MC/VBC/HBC/Character.text=Translate[newname]
+	$MC/VBC/HBC/Character.add_theme_color_override("font_color",Color(Colors[ColorId[newname]]))
+	$MC/VBC/HBC/Character.add_theme_color_override("font_pressed_color",Color(Colors[ColorId[newname]]))
+	$MC/VBC/HBC/Character.add_theme_color_override("font_hover_color",Color(Colors[ColorId[newname]]))
+	switched_char.emit(newname)
 
 func _on_cure_pressed():
 	var sure = await AskBool("確定使用解藥？")
