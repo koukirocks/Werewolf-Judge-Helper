@@ -1,8 +1,13 @@
 extends Control
 
+var NametoId = {"Villager":0}
+
 func _ready():
 	var buttons=get_tree().get_nodes_in_group("Characters")
+	var now = 1
 	for node in buttons:
+		NametoId[node.name]=now
+		now+=1
 		node.character_chosen.connect(_on_character_chosen)
 		node.character_removed.connect(_on_character_removed)
 
@@ -19,5 +24,9 @@ func _on_character_removed(character_name):
 
 signal start_game(Characters)
 
+func Compare(a,b):
+	return NametoId[a]<NametoId[b]
+
 func _on_start_pressed():
+	Characters.sort_custom(Compare)
 	start_game.emit(Characters)
