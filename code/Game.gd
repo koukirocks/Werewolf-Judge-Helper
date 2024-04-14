@@ -59,11 +59,43 @@ func list_popup():
 	$ListPopup.visible = false
 	return who
 
+var gameseq=[]
+var eventId=0
+var nightCount=0
+
+func next():
+	eventId+=1
+	if eventId==len(gameseq):
+		eventId=0
+		nightCount+=1
+
+func existPolice():
+	for node in get_tree().get_nodes_in_group("Players"):
+		if node.get_node("MC/VBC/HBC/IsPolice").button_pressed:
+			print(node.name)
+			return true
+	return false
+
+func _on_routine_pressed():
+	next()
+	while gameseq[eventId][2]==1 and nightCount!=0:
+		next()
+	while gameseq[eventId][2]==3 and nightCount==0:
+		next()
+	while gameseq[eventId][2]==4 and existPolice():
+		next()
+		
+	$PC/MC/Routine.text = gameseq[eventId][1]
+
 func init():
 	sequence = get_node("/root/Main/GameConstant").sequence
 	Translate = get_node("/root/Main/GameConstant").Translate
 	ColorId = get_node("/root/Main/GameConstant").ColorId
 	Colors = get_node("/root/Main/GameConstant").Colors
+	for event in sequence:
+		if event[0]=="MUST" or event[0] in Characters:
+			gameseq.append(event)
+	$PC/MC/Routine.text = gameseq[eventId][1]
 	var Player=PlayerScene.instantiate()
 	Player.name="P1"
 	get_node("SC/VBC").add_child(Player)

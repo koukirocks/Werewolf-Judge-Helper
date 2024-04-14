@@ -262,6 +262,10 @@ theme_override_font_sizes/font_size = 40
 text = "通靈
 師"
 
+[node name="Police" parent="Scroll/VBox1/Survivor/Margin1/VBox3/Buttons" groups=["Characters", "Survivors"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+text = "警長"
+
 [node name="Werewolf" type="PanelContainer" parent="Scroll/VBox1"]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
