@@ -54,6 +54,7 @@ func _got_dropdown_signal(character):
 	char_chosen.emit(character)
 
 func list_popup():
+	$ListPopup/Window/MC/SC.scroll_vertical=0
 	$ListPopup.visible = true
 	var who = await char_chosen
 	$ListPopup.visible = false
@@ -72,7 +73,6 @@ func next():
 func existPolice():
 	for node in get_tree().get_nodes_in_group("Players"):
 		if node.get_node("MC/VBC/HBC/IsPolice").button_pressed:
-			print(node.name)
 			return true
 	return false
 
@@ -95,6 +95,8 @@ func init():
 	for event in sequence:
 		if event[0]=="MUST" or event[0] in Characters:
 			gameseq.append(event)
+	eventId=0
+	nightCount=0
 	$PC/MC/Routine.text = gameseq[eventId][1]
 	var Player=PlayerScene.instantiate()
 	Player.name="P1"

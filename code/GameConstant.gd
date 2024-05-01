@@ -34,7 +34,8 @@ var sequence = [
 	["MUST","宣布死亡",2],
 	["MUST","發表遺言",1],
 	["MUST","發言",2],
-	["MUST","投票",2]
+	["MUST","投票",2],
+	["MUST","發表遺言",2],
 ]
 
 var ColorId={
