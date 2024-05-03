@@ -63,6 +63,7 @@ func list_popup():
 var gameseq=[]
 var eventId=0
 var nightCount=0
+var playerAlive=[]
 
 func next():
 	eventId+=1
@@ -84,8 +85,15 @@ func _on_routine_pressed():
 		next()
 	while gameseq[eventId][2]==4 and existPolice():
 		next()
-		
-	$PC/MC/Routine.text = gameseq[eventId][1]
+	
+	if gameseq[eventId][1]=="發言":
+		if existPolice():
+			$PC/MC/Routine.text = gameseq[eventId][1]+" ( 警左警右 )"			
+		else:
+			var talk=playerAlive[randi()%len(playerAlive)]
+			$PC/MC/Routine.text = gameseq[eventId][1]+" ( "+str(talk)+"號發言 )"
+	else:
+		$PC/MC/Routine.text = gameseq[eventId][1]
 
 func init():
 	sequence = get_node("/root/Main/GameConstant").sequence
@@ -104,7 +112,9 @@ func init():
 	get_node("SC/VBC/P1").initialize(Characters,1)
 	$"SC/VBC".move_child($"SC/VBC/P1",0)
 	print($"SC/VBC/P1".size)
+	playerAlive=[1]
 	for i in range(2,PlayerCount+1):
+		playerAlive.append(i)
 		Player=PlayerScene.instantiate()
 		Player.name="P%s" % i
 		get_node("SC/VBC/P%s" % (i-1)).add_sibling(Player)

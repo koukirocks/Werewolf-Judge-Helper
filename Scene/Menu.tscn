@@ -388,6 +388,11 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "咒狐"
 
+[node name="Player ver" parent="Scroll/VBox1/Third Party/Margin2/VBox3/Buttons" groups=["Characters", "Third Party", "Werewolves"] instance=ExtResource("3_80dwd")]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "玩家"
+
 [node name="Third Party2" type="PanelContainer" parent="Scroll/VBox1"]
 layout_mode = 2
 mouse_filter = 1

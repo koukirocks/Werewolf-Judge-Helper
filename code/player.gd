@@ -48,6 +48,7 @@ func _on_die_pressed():
 		$PC.visible = true
 		$MC/VBC/HBC/IsPolice.button_pressed = false
 		$MC/VBC/GridContainer.visible = false
+		$"../../..".playerAlive.erase(PlayerId)
 
 signal switched_char(newname)
 

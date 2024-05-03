@@ -248,6 +248,11 @@ theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 15
 columns = 4
 
+[node name="Sus" parent="MultiPopup/Window/MC/GridContainer" instance=ExtResource("7_706ef")]
+layout_mode = 2
+text = "疑"
+needs = ["Player ver"]
+
 [node name="Kill" parent="MultiPopup/Window/MC/GridContainer" instance=ExtResource("7_706ef")]
 layout_mode = 2
 color = "#ff0000"
@@ -267,7 +272,7 @@ color = "#ff0000"
 [node name="Checked" parent="MultiPopup/Window/MC/GridContainer" instance=ExtResource("7_706ef")]
 layout_mode = 2
 text = "查"
-needs = ["Prophet", "Psychic"]
+needs = ["Cursed"]
 color = "#0000ff"
 
 [node name="Guard" parent="MultiPopup/Window/MC/GridContainer" instance=ExtResource("7_706ef")]
@@ -348,6 +353,26 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 20
+
+[node name="Unknown" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+text = "未知"
+req = "Player ver"
+
+[node name="Good Guy" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+text = "好人"
+req = "Player ver"
+
+[node name="Bad Guy" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+text = "壞人"
+req = "Player ver"
+
+[node name="Third P" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
+layout_mode = 2
+text = "第三陣營"
+req = "Player ver"
 
 [node name="Villager" parent="ListPopup/Window/MC/SC/VBC" instance=ExtResource("7_jnoi7")]
 layout_mode = 2

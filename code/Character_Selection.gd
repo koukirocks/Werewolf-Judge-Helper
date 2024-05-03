@@ -6,6 +6,7 @@ var color = "#000000"
 var Colors
 var ColorId
 var Translate
+@export var req=""
 
 func _ready():
 	add_to_group("Dropdown")
@@ -14,12 +15,13 @@ func _ready():
 	Translate = $"/root/Main/GameConstant".Translate
 	color = Colors[ColorId[name]]
 	text = Translate[name]
+	
 	add_theme_color_override("font_color",Color(color))
 	add_theme_color_override("font_hover_color",Color(color))
 	add_theme_color_override("font_pressed_color",Color(color))
 
 func initialize():
-	if name in $"../../../../../..".Characters:
+	if name in $"../../../../../..".Characters or req in $"../../../../../..".Characters:
 		visible = true
 	else:
 		visible = false

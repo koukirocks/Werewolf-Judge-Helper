@@ -40,6 +40,7 @@ var sequence = [
 
 var ColorId={
 	"Villager":0,
+	"Unknown":0,
 	"Prophet":1,
 	"Witch":1,
 	"Hunter":1,
@@ -52,6 +53,7 @@ var ColorId={
 	"Bear":1,
 	"Dreamer":1,
 	"Psychic":1,
+	"Good Guy":1,
 	"Wolf":2,
 	"King":2,
 	"Black":2,
@@ -59,14 +61,17 @@ var ColorId={
 	"Snow":2,
 	"Blood":2,
 	"Devil":2,
+	"Bad Guy":2,
 	"Cupid":3,
 	"Thief":3,
 	"Bomber":3,
-	"Cursed":3
+	"Cursed":3,
+	"Third P":3
 }
 
 var Translate={
 	"Villager":"村民",
+	"Unknown":"未知",
 	"Prophet":"預言家",
 	"Witch":"女巫",
 	"Hunter":"獵人",
@@ -79,6 +84,7 @@ var Translate={
 	"Bear":"馴熊師",
 	"Dreamer":"攝夢人",
 	"Psychic":"通靈師",
+	"Good Guy":"好人",
 	"Wolf":"小狼",
 	"King":"狼王",
 	"Black":"黑狼王",
@@ -86,10 +92,12 @@ var Translate={
 	"Snow":"雪狼",
 	"Blood":"血月使者",
 	"Devil":"惡靈騎士",
+	"Bad Guy":"壞人",
 	"Cupid":"邱比特",
 	"Thief":"盜賊",
 	"Bomber":"炸彈客",
-	"Cursed":"咒狐"
+	"Cursed":"咒狐",
+	"Third P":"第三陣營"
 }
 
 var Colors=["#FFFFFF","#0000FF","#850000","#00FF00"]
